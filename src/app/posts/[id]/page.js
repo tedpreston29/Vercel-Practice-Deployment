@@ -1,12 +1,8 @@
-import pg from "pg";
-import db from "@/utils/utilities";
+import { db } from "@/utils/utilities";
+import Link from "next/link";
 
 export default async function Post({ params }) {
   const { id } = await params;
-
-  const db = new pg.Pool({
-    connectionString: process.env.NEXT_POSTGRES,
-  });
 
   const result = await db.query("SELECT * FROM posts WHERE id = $1", [id]);
   const post = result.rows;
@@ -19,6 +15,9 @@ export default async function Post({ params }) {
           <p>{post.content}</p>
         </div>
       ))}
+      <div>
+        <Link href={`/posts`}>Back to All Posts</Link>
+      </div>
     </div>
   );
 }

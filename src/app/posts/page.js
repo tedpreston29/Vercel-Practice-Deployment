@@ -14,11 +14,14 @@ export default async function PostsPage() {
       <h1>Posts</h1>
       <ul>
         {posts.map((post) => (
-          <Link key={post.id} href={`/post/${post.id}`}>
-            {post.title}
-          </Link>
+          <li key={post.id}>
+            <Link href={`/posts/${post.id}`}>{post.title}</Link>
+          </li>
         ))}
       </ul>
+      <Link key={posts.id} href={`/posts/new`}>
+        Make New Post!
+      </Link>
     </div>
   );
 }
