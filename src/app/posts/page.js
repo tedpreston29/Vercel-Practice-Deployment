@@ -7,7 +7,7 @@ export default async function PostsPage() {
   });
 
   const posts = (await db.query(`SELECT * FROM posts`)).rows;
-  console.log(posts);
+  console.log("posts are:", posts);
 
   return (
     <div>
